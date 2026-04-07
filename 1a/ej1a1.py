@@ -39,9 +39,19 @@ Exemple:
 
 '''
 
-def fibonacci(fibonacci_number):
-    # Write here your code
-    pass
+def fibonacci(fibonacci_number) -> int:
+    if not isinstance(fibonacci_number, int):
+        raise ValueError('El valor del parametro debe ser un número entero')
+    elif fibonacci_number < 0:
+        raise ValueError('El valor del parametro debe ser mayor o igual a 0')
+
+    values = range(2, fibonacci_number + 1)
+    results = [0, 1]
+
+    for value in values:
+       results += [results[value - 1] + results[value - 2]]
+
+    return results[fibonacci_number]
 
 # Si quieres probar tu código, descomenta las siguientes líneas y ejecuta el script 
 # Si vols provar el teu codi, descomenta les línies següents i executa l'script
